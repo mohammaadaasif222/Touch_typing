@@ -1,0 +1,11 @@
+.correct {
+  color: #fff;
+}
+.incorrect {
+  color: red;
+  text-decoration: underline;
+}
+#timeup{
+  color: red;
+  display: none;
+}
