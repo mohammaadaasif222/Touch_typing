@@ -1,20 +1,16 @@
 const element = document.getElementById("sec");
 const timeup = document.getElementById("timeup");
 
-
-// const getData = async () => {
-//   try {
-//     const res = await fetch("http://api.quotable.io/random");
-//     const data = await res.json();
-//     container.innerText = data.content;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// getData();
-
-const text =
-  "The sincere friends of this world are as ship lights in the stormiest of nights.";
+const getData = async () => {
+  try {
+    const res = await fetch("http://api.quotable.io/random");
+    const data = await res.json();
+    text = data.content;
+  } catch (error) {
+    console.log(error);
+  }
+};
+getData();
 
 function addClass(element, name) {
   element.classList.add += name;
@@ -28,6 +24,8 @@ const formatText = (words) => {
   return `<span class="letter">${words}</span>`;
 };
 
+var total_sec;
+
 const newGame = () => {
   document.getElementById("container").innerHTML = "";
   for (let i = 0; i < text.length; i++) {
@@ -37,11 +35,8 @@ const newGame = () => {
   }
   document.querySelector(".letter").classList.add("current");
 
-
-
-
   const timer = setInterval(countUp, 1000);
-  var total_sec = 0;
+  total_sec = 0;
 
   function countUp() {
     total_sec++;
@@ -57,25 +52,21 @@ const newGame = () => {
       minute = 0;
     }
   }
-
 };
 
 var isStart = false;
-document.addEventListener('keydown', function (event) {
+document.addEventListener("keydown", function (event) {
   const key = event.key;
-  if (key === 'Enter'){
+  if (key === "Enter") {
     newGame();
     isStart = true;
-  }else if(!isStart){
-    alert(`Please press 'Enter' to start game!`)
+  } else if (!isStart) {
+    alert(`Please press 'Enter' to start game!`);
   }
-
-})
+});
 
 let counter = 0;
-if(counter === text.length){
-  
-}
+
 document.addEventListener("keyup", function (event) {
   const key = event.key;
   const currentLetter = document.querySelector(".letter.current");
@@ -86,7 +77,9 @@ document.addEventListener("keyup", function (event) {
 
   if (isLetter) {
     if (currentLetter) {
-      document.getElementById("wpm").innerHTML = counter += 1;
+      document.getElementById("wpm").innerHTML = Math.round(
+        (counter += 1 / total_sec)
+      );
       currentLetter.classList.add(key === expected ? "correct" : "incorrect");
       currentLetter.classList.remove("current");
       currentLetter.nextElementSibling.classList.add("current");
