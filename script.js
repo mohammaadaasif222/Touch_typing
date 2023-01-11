@@ -67,14 +67,14 @@ let counter = 0;
 document.addEventListener("keyup", function (event) {
   const key = event.key;
   const currentLetter = document.querySelector(".letter.current");
-  const expected = currentLetter.innerHTML;
+  const expected = currentLetter.textContent;
   const isLetter = key.length == 1 && key !== " ";
   const isSpace = key === " ";
   console.log({ key, expected });
 
   if (isLetter) {
     if (currentLetter) {
-      document.getElementById("wpm").innerHTML = Math.round(
+      document.getElementById("wpm").textContent = Math.round(
         (counter += 1 / total_sec)
       );
       currentLetter.classList.add(key === expected ? "correct" : "incorrect");
