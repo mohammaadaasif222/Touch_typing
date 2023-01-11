@@ -86,7 +86,9 @@ document.addEventListener("keyup", function (event) {
     }
   }
   if (isSpace) {
-    if (currentLetter !== " ") currentLetter.classList.remove("current");
-    currentLetter.nextElementSibling.classList.add("current");
+    if (currentLetter !== " ") {
+      currentLetter.classList.remove("current");
+      currentLetter.nextElementSibling.classList.add("current");
+    }
   }
 });
