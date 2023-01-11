@@ -1,9 +1,10 @@
 const element = document.getElementById("sec");
 const timeup = document.getElementById("timeup");
 
+var text;
 const getData = async () => {
   try {
-    const res = await fetch("http://api.quotable.io/random");
+    const res = await fetch("https://api.quotable.io/random");
     const data = await res.json();
     text = data.content;
   } catch (error) {
@@ -59,16 +60,7 @@ const newGame = () => {
   }
 };
 
-// var isStart = false;
-// document.addEventListener("keydown", function (event) {
-//   const key = event.key;
-//   if (key === "Enter") {
-//     newGame();
-//     isStart = true;
-//   } else if (!isStart) {
-//     alert(`Please press 'Enter' to start game!`);
-//   }
-// });
+
 
 let counter = 0;
 
