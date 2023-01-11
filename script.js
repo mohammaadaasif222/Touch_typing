@@ -26,7 +26,12 @@ const formatText = (words) => {
 
 var total_sec;
 
+var isStart=false;
 const newGame = () => {
+  isStart = true
+  if(isStart){
+    document.getElementById('start-btn').disabled = true;
+  }
   document.getElementById("container").innerHTML = "";
   for (let i = 0; i < text.length; i++) {
     document.getElementById("container").innerHTML += formatText(
@@ -54,16 +59,16 @@ const newGame = () => {
   }
 };
 
-var isStart = false;
-document.addEventListener("keydown", function (event) {
-  const key = event.key;
-  if (key === "Enter") {
-    newGame();
-    isStart = true;
-  } else if (!isStart) {
-    alert(`Please press 'Enter' to start game!`);
-  }
-});
+// var isStart = false;
+// document.addEventListener("keydown", function (event) {
+//   const key = event.key;
+//   if (key === "Enter") {
+//     newGame();
+//     isStart = true;
+//   } else if (!isStart) {
+//     alert(`Please press 'Enter' to start game!`);
+//   }
+// });
 
 let counter = 0;
 
